@@ -5,22 +5,24 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Arial, sans-serif;
+    font-family: 'Playfair Display', serif;
     background: linear-gradient(45deg, #f3f4f6, #ffffff);
     position: relative;
     overflow: hidden;
 }
 
 .centered-text {
-    font-size: 2rem;
-    color: #333;
-    padding: 2rem 4rem;
-    border: 2px solid #333;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-size: 2.5rem;
+    color: #2c3e50;
+    padding: 2.5rem 5rem;
+    border: 3px solid #2c3e50;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     position: relative;
-    background: white;
+    background: rgba(255, 255, 255, 0.9);
     z-index: 2;
+    text-align: center;
+    letter-spacing: 1px;
 }
 
 .image-container {
@@ -32,14 +34,69 @@ body {
 
 .travel-image {
     position: absolute;
-    width: 200px;
-    height: 150px;
+    width: 350px;  /* Increased from 250px */
+    height: 280px; /* Increased from 180px */
     object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.image1 { top: 10%; left: 10%; }
-.image2 { top: 10%; right: 10%; }
-.image3 { bottom: 10%; left: 10%; }
-.image4 { bottom: 10%; right: 10%; }
+.travel-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.image1 { 
+    top: 10%; 
+    left: 5%; 
+    transform: rotate(-5deg);
+}
+.image2 { 
+    top: 10%; 
+    right: 5%; 
+    transform: rotate(5deg);
+}
+.image3 { 
+    bottom: 10%; 
+    left: 5%; 
+    transform: rotate(5deg);
+}
+.image4 { 
+    bottom: 10%; 
+    right: 5%; 
+    transform: rotate(-5deg);
+}
+
+.centered-text::before,
+.centered-text::after {
+    content: '✈️';
+    position: absolute;
+    font-size: 2rem;
+    top: 50%;
+}
+
+.centered-text::before {
+    left: 20px;
+    transform: translateY(-50%) scaleX(-1); /* Flipped left airplane */
+}
+
+.centered-text::after {
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.travel-image {
+    animation: float 4s ease-in-out infinite;
+}
+
+.image1 { animation-delay: 0s; }
+.image2 { animation-delay: 1s; }
+.image3 { animation-delay: 2s; }
+.image4 { animation-delay: 3s; }
